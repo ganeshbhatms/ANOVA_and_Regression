@@ -23,12 +23,24 @@ df %>% filter(carb!=6 & carb!=8) ->df1   # or df[-c(which(df$carb==6),which(df$c
 ggplot(data = df1,aes(x = mpg))+
   geom_histogram(binwidth = 4,aes(y = ..density..),colour='black',fill='white')+
   geom_density(colour='black',fill='red',alpha = 0.3, linetype = 'dashed')
+```
+![](../master/images/nomallity.png)
+```r
 ggplot(data = df1,aes(sample=mpg))+
   stat_qq()+
   stat_qq_line()
+```
+![](../master/images/qqplot.png)
+```r
 shapiro.test(df1$mpg)
 ```
-Here p-value is greater than 0.05,so we accept the null hypothesis that mpg is normally distributed.
+```
+	Shapiro-Wilk normality test
+
+data:  df1$mpg
+W = 0.95255, p-value = 0.1978
+```
+Here p-value is greater than 0.05, so we accept the null hypothesis that mpg is normally distributed.
 #### Effect of cylinder on mileage
 ```r
 df1 %>%  group_by(cyl) %>% summarise(count = n(),
@@ -45,6 +57,7 @@ ggplot(data=df1,aes(x=cyl,y=mpg,fill=cyl))+
   geom_boxplot(outlier.colour = 'red')+
   ggtitle('Boxplot of mpg vs cyl')
 ```
+![](../master/images/boxplotcyl.png)\
 from the above graph we can say than, as number of cyllinder increases mileage decreases, let's check this by using ANOVA model
 ```r
 cyl.aov <- aov(mpg~cyl,data=df1)
@@ -104,6 +117,7 @@ Here p-value is greater than 0.05, we accept null hypothesis, so the residuals a
 ```r
 Plot(cyl.aov,1)
 ```
+![](../master/images/residualscyl.png) \
 Data points are equally distributed on both side of the zero line, therefore the model is good fit.\
 3. Bartlett test of homogeneity of variances: 
 ```r
