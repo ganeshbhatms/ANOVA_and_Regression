@@ -101,7 +101,7 @@ $cyl
 8-4 -11.555944 -14.948826 -8.1630624 0.0000000
 8-6  -4.642308  -8.729834 -0.5547809 0.0236113
 ```
-Checking model adequecy:
+**Checking model adequecy:**
 1. Checking normality assumption for residuals
 ```r
 shapiro.test(cyl.aov$residuals)
@@ -112,14 +112,16 @@ shapiro.test(cyl.aov$residuals)
 data:  cyl.aov$residuals
 W = 0.97194, p-value = 0.5935
 ```
-Here p-value is greater than 0.05, we accept null hypothesis, so the residuals are normally distributed. \
-2. Residual v/s fitted curve:
+Here p-value is greater than 0.05, we accept null hypothesis, so the residuals are normally distributed.
+
+2. Residual v/s fitted curve
 ```r
 Plot(cyl.aov,1)
 ```
 ![](../master/images/residualscyl.png) \
-Data points are equally distributed on both side of the zero line, therefore the model is good fit.\
-3. Bartlett test of homogeneity of variances: 
+Data points are equally distributed on both side of the zero line, therefore the model is good fit.
+
+3. Bartlett test of homogeneity of variances
 ```r
 bartlett.test(mpg~cyl,data=df)
 ```
