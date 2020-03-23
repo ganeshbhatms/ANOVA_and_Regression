@@ -24,13 +24,13 @@ ggplot(data = df1,aes(x = mpg))+
   geom_histogram(binwidth = 4,aes(y = ..density..),colour='black',fill='white')+
   geom_density(colour='black',fill='red',alpha = 0.3, linetype = 'dashed')
 ```
-![](../master/images/nomallity.png)
+![](../master/plots/nomallity.png)
 ```r
 ggplot(data = df1,aes(sample=mpg))+
   stat_qq()+
   stat_qq_line()
 ```
-![](../master/images/qqplot.png)
+![](../master/plots/qqplot.png)
 ```r
 shapiro.test(df1$mpg)
 ```
@@ -57,7 +57,7 @@ ggplot(data=df1,aes(x=cyl,y=mpg,fill=cyl))+
   geom_boxplot(outlier.colour = 'red')+
   ggtitle('Boxplot of mpg vs cyl')
 ```
-![](../master/images/boxplotcyl.png)\
+![](../master/plots/boxplotcyl.png)\
 from the above graph we can say than, as number of cyllinder increases mileage decreases, let's check this by using ANOVA model
 ```r
 cyl.aov <- aov(mpg~cyl,data=df1)
@@ -118,7 +118,7 @@ Here p-value is greater than 0.05, we accept null hypothesis, so the residuals a
 ```r
 Plot(cyl.aov,1)
 ```
-![](../master/images/residualcyl.png) \
+![](../master/plots/residualcyl.png) \
 Data points are equally distributed on both side of the zero line, therefore the model is good fit.
 
 3. Bartlett test of homogeneity of variances
@@ -161,7 +161,7 @@ ggplot(data=df1,aes(am,mpg,fill=am))+
   geom_boxplot(outlier.colour = 'red',fill='chocolate',notch = T)+
   ggtitle('Boxplot of mpg vs am')
 ```
-![](../master/images/boxplotam.png) \
+![](../master/plots/boxplotam.png) \
 Here we can see than mean of mileage for manual transmission is more than that of automatic transmission, let us check this by using anova model.
 ```r
 am.aov <- aov(mpg~am,data=df1)
@@ -192,7 +192,7 @@ Here p-value is greater than 0.05, we accept null hypothesis and concluide that 
 ```r
 Plot(am.aov,1)
 ```
-![](../master/images/residualsam.png) \
+![](../master/plots/residualsam.png) \
 Data points are equally distributed on both side of the zero line, therefore the model is good fit.
 
 3. Bartlett test of homogeneity of variances
@@ -226,7 +226,7 @@ ggplot(data=df1,aes(x=carb,y=mpg,fill=carb))+
   geom_boxplot(outlier.colour = 'red')+
   ggtitle('Boxplot of mpg vs carb')
 ```
-![](../master/images/boxplotcarb.png) \
+![](../master/plots/boxplotcarb.png) \
 Here we can see that mileage decreases as carborator increases, let us check this by using anova model.
 ```r
 carb.aov <- aov(mpg~carb,data=df1)
@@ -258,7 +258,7 @@ Here p-value is greater than 0.05, we accept null hypothesis and concluide that 
 ```r
 Plot(carb.aov,1)
 ```
-![](../master/images/residualcarb.png) \
+![](../master/plots/residualcarb.png) \
 Data points are equally distributed on both side of the zero line, therefore the model is good fit.
 
 3. Bartlett test of homogeneity of variances
