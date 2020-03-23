@@ -1,0 +1,1 @@
+This folder incluides plots of the R output
