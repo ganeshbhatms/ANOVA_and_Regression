@@ -1,5 +1,5 @@
 # One-Way ANOVA
-#setwd('D:/R learnings/mtcars') set your working directory if needed
+#setwd('D:/your_working_directory') set your working directory if needed
 library(dplyr)
 library(ggplot2)
 
